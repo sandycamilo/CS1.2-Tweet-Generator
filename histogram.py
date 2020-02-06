@@ -7,12 +7,12 @@ def histogram(story):
     # {'one':1, 'two':1, 'red':1, 'blue':1, 'fish':4}
     # one fish two fish red fish blue fish
     hist_dict = {}
-    story_lines = story.split() #turns string into a list 
+    story_lines = story[0].split() #turns string into a list 
     for words in story_lines: #iterating through every word in story_lines
         if words in hist_dict.keys(): # if the word was already in the histogram  ~ .keys returns all keys in the dictionary
-            hist_dict[words] += 1 #increasing the frequency by one 
+            hist_dict[words] = hist_dict[words] + 1 #increasing the frequency by one 
         else:
-            hist_dict[words] = 1 #initializing the word with frequency of 1 - only sees it once so it is equal to one
+            hist_dict[words] = 1 #first time seeing word so its adding the word with the count 1 to the dictionary. initializing the word with frequency of 1 - only sees it once so it is equal to one
     return hist_dict
 
 def unique_words(histogram):
