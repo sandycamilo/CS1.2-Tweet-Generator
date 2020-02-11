@@ -8,9 +8,9 @@ app = Flask(__name__)
 @app.route('/')
 def generate_words():
     #build a histogram
-    my_file = open("./source_text.txt", "r")
-    lines = my_file.readlines()
-    my_histogram = histogram(lines)
+    my_file = open("./source_text.txt", "r")  # opens file and reads it 
+    lines = my_file.readlines() # makes a string of all lines in file and stores it in 'lines'
+    my_histogram = histogram(lines) 
 
 
     ### generate a sentence 

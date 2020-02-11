@@ -9,7 +9,7 @@ from histogram import histogram , frequency
 #   return lines
 
 def sample_by_frequency(histogram):
-    word = random.randint(0, len(histogram) -1)
+    word = random.randint(0, len(histogram) -1) 
     end = 0
     for key, value in histogram.items():
         end += value 
