@@ -2,7 +2,6 @@ from flask import Flask
 from histogram import histogram #imports histogram function from histogram file
 from sample import sample_by_frequency
 
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,7 +10,6 @@ def generate_words():
     my_file = open("./source_text.txt", "r")  # opens file and reads it 
     lines = my_file.readlines() # makes a string of all lines in file and stores it in 'lines'
     my_histogram = histogram(lines) 
-
 
     ### generate a sentence 
     sentence = " "
