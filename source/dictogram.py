@@ -5,34 +5,44 @@ class Dictogram:
     def __init__(self, word_list):
         '''Initializes the dictogram properties'''
 
-        self.word_list = word_list
-       
+        self.word_list = word_list #Text file converted into word list
+        
         self.dictionary_histogram = self.build_dictogram()
 
-        self.tokens = sum(self.dictionary_histogram.values())
-        self.types = self.unique_words()
+        self.tokens = sum(self.dictionary_histogram.values()) # number of all the words in the dictionary
+        self.types = self.unique_words() #self.types is assigned to the unique.words function
 
     def build_dictogram(self): 
         '''Creates a histogram dictionary using the word_list property and returns it'''
-
         #TODO: use your histogram function as a starting point to complete this method
-        pass
+        hist_dict = {} #creates dictionary called hist_dict
+        for words in self.word_list: # for loop - for every word in the list called word_list that has a .self in front indicating its association with the class Dictogram
+            if words in hist_dict.keys(): # if word is in the dictionary stored in the keys of the key, value pairs
+                hist_dict[words] += 1 # add one to the value of the word in the dictionary
+            else:
+                hist_dict[words] = 1 # the count of the word stays as it is with a value of one- one because we know it exists 
+        return hist_dict  
 
     def frequency(self, word):
-        '''returns the frequency or count of the given word in the dictionary histogram'''
+        '''returns the frequency or count of the GIVEN word in the dictionary histogram'''
         #TODO: use your frequency function as a starting point to complete this method
-        pass
+        return self.dictionary_histogram[word]
 
     def unique_words(self):
         '''returns the number of unique words in the dictionary histogram'''
         #TODO: use your unique words function as a starting point to complete this method
-        pass
+        return len(self.dictionary_histogram.keys()) #len returns the number of items is the dictionary_histogram by accessing it with the keys funciton
 
     def sample(self):
         '''Randomly samples from the dictionary histogram based on the frequency, returns a word'''
-
         #TODO: use your sample function as a starting point to complete this method 
-        pass
+        word = randint(0, len(self.dictionary_histogram) -1) # random word from the histogram
+        end = 0 #counter 
+        for key, value in self.dictionary_histogram.items(): # for every key and value in histogram
+            end += value # counter is equal to the current value of the counter plus value of the key
+            if end >= word: # if counter is more or equal to than the value of the word
+                return key 
+        
 
 def print_dictogram(word_list):
     '''Creates a dictionary based histogram (dictogram) and then prints out its properties and samples from it'''
@@ -48,7 +58,7 @@ def print_dictogram(word_list):
         freq = dictogram.frequency(word)
         print('{!r} occurs {} times'.format(word, freq))
     print()
-    print_dictogram_samples(dictogram)
+    # print_dictogram_samples(dictogram)
 
 def print_dictogram_samples(dictogram):
     '''Compares sampled frequency to observed frequency'''
