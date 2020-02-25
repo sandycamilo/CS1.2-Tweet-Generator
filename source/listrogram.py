@@ -46,9 +46,9 @@ class Listogram:
         '''returns the frequency or count of the given word in the list of lists histogram'''
         #TODO: use your frequency and get_index function as a starting point to complete this method
         #You will need to adapt it a little bit to work with listogram
-        for index in range(len(self.list_histogram)): # getting index within the range of the length of the list histrogram
-            if self.list_histogram[index][0] == word: # if the index 0 in list histogram is equal to a word 
-                return self.list_histogram[index][1] # return the value
+        for index in range(len(self.list_histogram)): # getting index from list histrogram
+            if self.list_histogram[index][0] == word: # if word in list histogram matches the word 
+                return self.list_histogram[index][1] # return the count of the word
             return 0 # otherwise return 0
         
     def unique_words(self):
@@ -62,6 +62,8 @@ class Listogram:
         '''Randomly samples from the list of list histogram based on the frequency, returns a word'''
         #TODO: use your sample function as a starting point to complete this method 
         #You will need to adapt it a little bit to work with listogram
+        # one fish two fish blue fish red fish 
+        # [['fish', 4], ['one', 1], ['two', 1], ['red', 1], ['blue', 1]]
         word = randint(0, len(self.list_histogram) -1) # random word from the list histogram
         end = 0 #counter
         for key, value in self.dictionary_histogram.items(): # if the item in the list histogram's items
