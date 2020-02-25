@@ -4,51 +4,70 @@ class Listogram:
 
     def __init__(self, word_list):
         '''Initializes the listogram properties'''
-
         self.word_list = word_list
-       
         self.list_histogram = self.build_listogram()
-
         self.tokens = self.get_num_tokens()
         self.types = self.unique_words()
 
     def build_listogram(self): 
         '''Creates a histogram list of lists using the word_list property and returns it'''
-
         #TODO: use your listogram function as a starting point to complete this method
-        pass
+        histogram_list = [] #creates a list called histogram_list
+        for word in self.word_list: # for every word in the word list 
+            index = self.get_index(word, histogram_list) # index holds the value of the index of the word in the new created list 
+            if index == 'did not find it': # word is not there 
+                histogram_list.append([word, 1]) # append the word to the list-  with the value of one 
+            else:
+                innerlist = histogram_list[index] #accessing the inner list with the index
+                innerlist[1] += 1 #adding one to the count 
+        return(histogram_list)
 
     def get_num_tokens(self):
         '''gets the number of tokens in the listogram'''
-
-        tokens = 0
-        for item in self.list_histogram:
-            tokens += item[1]
-        return tokens
+        tokens = 0 #tokens is set to a value of zero
+        for item in self.list_histogram: # for every item in the list histogram 
+            tokens += item[1] # tokens with the value of zero is increased by the value of the item that has a default value of one 
+        return tokens # the value of tokens is returned
 
     def get_index(self, word, list_histogram):
         '''searches in the list histogram parameter and returns the index of the inner list that contains the word if present'''
         #TODO: use your get_index function as a starting point to complete this method
-        pass
+        index = 0
+        for innerlist in list_histogram: # for every list word in list histogram
+            #index = word.index(list_word) # created a new variable called index where the index of the list word is stored of the 
+            #return index
+            if word == innerlist[0]:
+                return index
+            index += 1 
+        return 'did not find it'
+
 
     def frequency(self, word):
         '''returns the frequency or count of the given word in the list of lists histogram'''
         #TODO: use your frequency and get_index function as a starting point to complete this method
         #You will need to adapt it a little bit to work with listogram
-        pass
+        for index in range(len(self.list_histogram)): # getting index within the range of the length of the list histrogram
+            if self.list_histogram[index][0] == word: # if the index 0 in list histogram is equal to a word 
+                return self.list_histogram[index][1] # return the value
+            return 0 # otherwise return 0
         
     def unique_words(self):
         '''returns the number of unique words in the list of lists histogram'''
         #TODO: use your unique words function as a starting point to complete this method
         #You will need to adapt it a little bit to work with listogram
-        pass
+        return len(self.list_histogram) # returns the number of the length of all the items in the list histogram
 
 
     def sample(self):
         '''Randomly samples from the list of list histogram based on the frequency, returns a word'''
-
         #TODO: use your sample function as a starting point to complete this method 
         #You will need to adapt it a little bit to work with listogram
+        word = randint(0, len(self.list_histogram) -1) # random word from the list histogram
+        end = 0 #counter
+        for key, value in self.dictionary_histogram.items(): # if the item in the list histogram's items
+            end += value 
+            if end >= word
+                return key 
 
 def print_listogram(word_list):
     '''Creates a list based histogram (listogram) and then prints out its properties and samples from it'''
@@ -64,7 +83,7 @@ def print_listogram(word_list):
         freq = listogram.frequency(word)
         print('{!r} occurs {} times'.format(word, freq))
     print()
-    print_dictogram_samples(listogram)
+    # print_dictogram_samples(listogram)
 
 def print_dictogram_samples(listogram):
     '''Compares sampled frequency to observed frequency'''

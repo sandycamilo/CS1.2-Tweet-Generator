@@ -3,8 +3,6 @@ from dictogram import Dictogram
 class MarkovChain:
 
     def __init__(self, word_list):
-
-
         #The Markov chain will be a dictionary of dictionaries
         #Example: for "one fish two fish red fish blue fish"
         #{"one": {fish:1}, "fish": {"two":1, "red":1, "blue":1}, "two": {"fish":1}, "red": {"fish":1}, "blue": {"fish:1"}}
