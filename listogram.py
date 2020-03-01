@@ -46,9 +46,9 @@ class Listogram:
         '''returns the frequency or count of the given word in the list of lists histogram'''
         #TODO: use your frequency and get_index function as a starting point to complete this method
         #You will need to adapt it a little bit to work with listogram
-        for index in range(len(self.list_histogram)): # getting index from list histrogram
-            if self.list_histogram[index][0] == word: # if word in list histogram matches the word 
-                return self.list_histogram[index][1] # return the count of the word
+        for item in self.list_histogram: # getting index from list histrogram
+            if item[0] == word: # if word in list histogram matches the word 
+                return item[1] # return the count of the word
             return 0 # otherwise return 0
         
     def unique_words(self):
