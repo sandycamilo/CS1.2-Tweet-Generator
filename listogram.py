@@ -66,9 +66,9 @@ class Listogram:
         # [['fish', 4], ['one', 1], ['two', 1], ['red', 1], ['blue', 1]]
         word = randint(0, len(self.list_histogram) -1) # random word from the list histogram
         end = 0 #counter
-        for key, value in self.dictionary_histogram.items(): # if the item in the list histogram's items
+        for key, value in self.list_histogram: # if the item in the list histogram's items
             end += value 
-            if end >= word
+            if end >= word:
                 return key 
 
 def print_listogram(word_list):
