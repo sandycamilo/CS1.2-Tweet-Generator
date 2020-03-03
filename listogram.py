@@ -67,7 +67,7 @@ class Listogram:
         word = randint(0, len(self.list_histogram) -1) # random word from the list histogram
         end = 0 #counter
         for key, value in self.list_histogram: # if the item in the list histogram's items
-            end += value 
+            end += value[0]
             if end >= word:
                 return key 
 

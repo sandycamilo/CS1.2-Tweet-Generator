@@ -52,13 +52,26 @@ class LinkedList(object):
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes and count one for each
+        count = 0 
+        node = self.head
+        while node is not None:
+            node = node.next
+            count += 1   
+        return count
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
+        if self.is_empty():
+            node = Node(item)
+            self.head = node 
+            self.tail = node 
+        else: 
+            node = Node(item)
+            self.tail.next = node
+            self.tail = self.tail.next
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
