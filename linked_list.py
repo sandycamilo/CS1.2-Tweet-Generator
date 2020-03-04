@@ -132,22 +132,18 @@ class LinkedList(object):
                     prev_node.next = curr_node.next
                     return
             raise ValueError('Item not found')   
-        # 
+        
         #  # cur_node = self.head 
         # prev_node = None
-
         # while cur_node.data != item:
         #     prev_node = cur_node
-        #     cur_node = cur_node.next 
-        
+        #     cur_node = cur_node.next  
         # cur_node = None 
-    
-
-    # def print_ll(self):
-    #     current = self.head
-    #     while current != None:
-    #         print(current.data)
-    #         current = current.next
+        # def print_ll(self):
+        #     current = self.head
+        #     while current != None:
+        #         print(current.data)
+        #         current = current.next
 
 def test_linked_list():
     ll = LinkedList()
