@@ -111,27 +111,56 @@ class LinkedList(object):
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
+        # empty list
+        if self.is_empty(): 
+            raise ValueError('Item not found')
+
+        # assign iterators
         prev_node = self.head
         curr_node = self.head.next
-                
-        while prev_node != None and curr_node != None: 
+
+        # head is item to delete
+        if prev_node.data == item:
+            if self.head == self.tail: #if you are deleting the only thing in the list
+                self.tail = None 
+            self.head = curr_node
+            prev_node = None  # prev_node.next
+            return
+
+        # looping through the entire list
+        while curr_node != None:
+            print(curr_node)
+            print(prev_node)
+        #if we found the item that we are looking for 
+            if curr_node.data == item:
+                prev_node.next = curr_node.next
+                curr_node = None
+                #if we are deleting the tail node 
+                if prev_node.next is None:
+                    self.tail = prev_node
+                return
+            else:
+                prev_node = curr_node 
+                curr_node = curr_node.next
+
+
             #check if item is in head and tail (one item in list)
-            if item == prev_node.data or item == curr_node.next.data:
-                prev_node = None 
-                curr_node.next= None
-                #check if item in head
-                if item == prev_node.data:
-                    # prev_node = prev_node.next
-                    self.head = curr_node 
-                #check if item in tail
-                elif item == curr_node.next.data:     
-                    # curr_node.next = prev_node
-                    prev_node.next = None
-                #middle case 
-                elif item == curr_node.data:
-                    prev_node.next = curr_node.next
-                    return
-            raise ValueError('Item not found')   
+            # if item == prev_node.data or item == curr_node.next.data:
+            #     prev_node = None 
+            #     curr_node.next= None
+            #     #check if item in head
+            #     if item == prev_node.data:
+            #         # prev_node = prev_node.next
+            #         self.head = curr_node 
+            #     #check if item in tail
+            #     elif item == curr_node.next.data:     
+            #         # curr_node.next = prev_node
+            #         prev_node.next = None
+            #     #middle case 
+            #     elif item == curr_node.data:
+            #         prev_node.next = curr_node.next
+            #         return
+        raise ValueError('Item not found')   
         
         #  # cur_node = self.head 
         # prev_node = None
