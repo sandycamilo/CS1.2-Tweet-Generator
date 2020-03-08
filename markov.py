@@ -27,9 +27,7 @@ class MarkovChain:
 
         return markov_chain
 
-    def walk(self, num_words):
-        #TODO: generate a sentence num_words long using the markov chain
-        
+    def walk(self, num_words):        
         first_word = random.choice(list(self.word_dict.keys())) 
         sentence = []
         print(self.word_dict)
