@@ -66,16 +66,16 @@ class HashTable(object):
                 return True 
         return False
 
-
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, return value associated with given key
-        # TODO: Otherwise, raise error to tell user get failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
-
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+        for key_bucket, value in buckets.items():
+            if key_bucket == key:
+                return value 
+        raise KeyError('Key not found: {}'.format(key))
+    
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
