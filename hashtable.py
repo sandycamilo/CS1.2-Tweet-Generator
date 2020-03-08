@@ -83,7 +83,7 @@ class HashTable(object):
         self.count += 1 
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        
+
         if bucket.find(lambda item: (key, value)) is None:
             bucket.append((key, value))
             return
@@ -94,11 +94,17 @@ class HashTable(object):
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, delete entry associated with given key
-        # TODO: Otherwise, raise error to tell user delete failed
-        # Hint: raise KeyError('Key not found: {}'.format(key))
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+
+        for key_bucket, value in bucket.items():
+            if key_bucket == key:
+                bucket.delete((key_bucket, value))
+                self.count -= 1
+                print("self.buckets in delete", self.buckets)
+                return
+
+        raise KeyError('Key not found: {}'.format(key))
 
 
 def test_hash_table():
